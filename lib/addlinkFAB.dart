@@ -9,7 +9,7 @@ class CSlink extends StatefulWidget {
 class _CSlinkState extends State<CSlink> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   String NotesLink;
-
+//
   String subname;
 
   final textController = TextEditingController();
