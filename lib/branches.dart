@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'addlinkFAB.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'CShyperlink.dart';
 
 class CSroute extends StatefulWidget {
   @override
@@ -11,7 +9,6 @@ class CSroute extends StatefulWidget {
 }
 
 class _CSrouteState extends State<CSroute> {
-  String hyperl;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +30,7 @@ class _CSrouteState extends State<CSroute> {
                 final data = docs[i].data();
                 return ListTile(
                   title: Text(data['text']),
-                  subtitle: Text(data['link']),
+                  //subtitle: Text(data['link']),
 
                   onTap: () async {
                      String url = data['link'];
@@ -71,7 +68,34 @@ class _ECErouteState extends State<ECEroute> {
       appBar: AppBar(
         title: Text("ECE"),
       ),
-      body: Center(),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('ECEdata').snapshots(),
+        builder: (_, snapshot) {
+          if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            final docs = snapshot.data.docs;
+            return ListView.builder(
+              itemCount: docs.length,
+              itemBuilder: (_, i) {
+                final data = docs[i].data();
+                return ListTile(
+                  title: Text(data['text']),
+                  //subtitle: Text(data['link']),
+
+                  onTap: () async {
+                    String url = data['link'];
+                    await launch(url);
+                  },
+                );
+              },
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -92,7 +116,34 @@ class ITroute extends StatelessWidget {
       appBar: AppBar(
         title: Text("IT"),
       ),
-      body: Center(),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('ITdata').snapshots(),
+        builder: (_, snapshot) {
+          if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            final docs = snapshot.data.docs;
+            return ListView.builder(
+              itemCount: docs.length,
+              itemBuilder: (_, i) {
+                final data = docs[i].data();
+                return ListTile(
+                  title: Text(data['text']),
+                  //subtitle: Text(data['link']),
+
+                  onTap: () async {
+                    String url = data['link'];
+                    await launch(url);
+                  },
+                );
+              },
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -113,7 +164,34 @@ class ICEroute extends StatelessWidget {
       appBar: AppBar(
         title: Text("ICE"),
       ),
-      body: Center(),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('ICEdata').snapshots(),
+        builder: (_, snapshot) {
+          if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            final docs = snapshot.data.docs;
+            return ListView.builder(
+              itemCount: docs.length,
+              itemBuilder: (_, i) {
+                final data = docs[i].data();
+                return ListTile(
+                  title: Text(data['text']),
+                  //subtitle: Text(data['link']),
+
+                  onTap: () async {
+                    String url = data['link'];
+                    await launch(url);
+                  },
+                );
+              },
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -134,7 +212,34 @@ class MPAEroute extends StatelessWidget {
       appBar: AppBar(
         title: Text("MPAE"),
       ),
-      body: Center(),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('MPAEdata').snapshots(),
+        builder: (_, snapshot) {
+          if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            final docs = snapshot.data.docs;
+            return ListView.builder(
+              itemCount: docs.length,
+              itemBuilder: (_, i) {
+                final data = docs[i].data();
+                return ListTile(
+                  title: Text(data['text']),
+                  //subtitle: Text(data['link']),
+
+                  onTap: () async {
+                    String url = data['link'];
+                    await launch(url);
+                  },
+                );
+              },
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -155,7 +260,34 @@ class MEroute extends StatelessWidget {
       appBar: AppBar(
         title: Text("ME"),
       ),
-      body: Center(),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('MEdata').snapshots(),
+        builder: (_, snapshot) {
+          if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            final docs = snapshot.data.docs;
+            return ListView.builder(
+              itemCount: docs.length,
+              itemBuilder: (_, i) {
+                final data = docs[i].data();
+                return ListTile(
+                  title: Text(data['text']),
+                  //subtitle: Text(data['link']),
+
+                  onTap: () async {
+                    String url = data['link'];
+                    await launch(url);
+                  },
+                );
+              },
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -176,7 +308,34 @@ class MACroute extends StatelessWidget {
       appBar: AppBar(
         title: Text("MAC"),
       ),
-      body: Center(),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('MACdata').snapshots(),
+        builder: (_, snapshot) {
+          if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            final docs = snapshot.data.docs;
+            return ListView.builder(
+              itemCount: docs.length,
+              itemBuilder: (_, i) {
+                final data = docs[i].data();
+                return ListTile(
+                  title: Text(data['text']),
+                  //subtitle: Text(data['link']),
+
+                  onTap: () async {
+                    String url = data['link'];
+                    await launch(url);
+                  },
+                );
+              },
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -197,7 +356,34 @@ class BTroute extends StatelessWidget {
       appBar: AppBar(
         title: Text("BT"),
       ),
-      body: Center(),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('BTdata').snapshots(),
+        builder: (_, snapshot) {
+          if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            final docs = snapshot.data.docs;
+            return ListView.builder(
+              itemCount: docs.length,
+              itemBuilder: (_, i) {
+                final data = docs[i].data();
+                return ListTile(
+                  title: Text(data['text']),
+                  //subtitle: Text(data['link']),
+
+                  onTap: () async {
+                    String url = data['link'];
+                    await launch(url);
+                  },
+                );
+              },
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
