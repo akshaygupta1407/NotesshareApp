@@ -35,6 +35,10 @@ class _CSrouteState extends State<CSroute> {
                   title: Text(data['text']),
                   subtitle: Text(data['link']),
 
+                  onTap: () async {
+                    //const url = data['link'];
+                      //await launch(url);
+                  },
                 );
               },
             );
