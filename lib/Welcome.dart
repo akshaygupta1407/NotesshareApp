@@ -18,12 +18,12 @@ class welcomepage extends StatelessWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
-
                 Text(
-                  "NotesApp",textAlign: TextAlign.center,style: TextStyle(
+                  "      NotesApp",style: TextStyle(
                   fontSize: 45.0,
                      fontWeight: FontWeight.w900,
                 ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),

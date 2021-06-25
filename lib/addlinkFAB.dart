@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'constants.dart';
 
 class CSlink extends StatefulWidget {
   @override
@@ -37,10 +38,13 @@ class _CSlinkState extends State<CSlink> {
           ),
           TextField(
               controller: textController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 subname = value;
-              }),
+              }
+
+              ),
           SizedBox(
             height: 35,
             width: 10,
@@ -55,7 +59,8 @@ class _CSlinkState extends State<CSlink> {
           ),
           TextField(
               controller: textController1,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+              textAlign: TextAlign.center,
               onChanged: (valuee) {
                 NotesLink = valuee;
               }),
@@ -115,7 +120,8 @@ class _ECElinkState extends State<ECElink> {
           ),
           TextField(
               controller: textController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 subname = value;
               }),
@@ -133,7 +139,8 @@ class _ECElinkState extends State<ECElink> {
           ),
           TextField(
               controller: textController1,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+              textAlign: TextAlign.center,
               onChanged: (valuee) {
                 NotesLink = valuee;
               }),
@@ -193,7 +200,8 @@ class _ITlinkState extends State<ITlink> {
           ),
           TextField(
               controller: textController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 subname = value;
               }),
@@ -211,7 +219,8 @@ class _ITlinkState extends State<ITlink> {
           ),
           TextField(
               controller: textController1,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+              textAlign: TextAlign.center,
               onChanged: (valuee) {
                 NotesLink = valuee;
               }),
@@ -271,7 +280,8 @@ class _ICElinkState extends State<ICElink> {
           ),
           TextField(
               controller: textController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 subname = value;
               }),
@@ -289,7 +299,8 @@ class _ICElinkState extends State<ICElink> {
           ),
           TextField(
               controller: textController1,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+              textAlign: TextAlign.center,
               onChanged: (valuee) {
                 NotesLink = valuee;
               }),
@@ -349,7 +360,8 @@ class _MPAElinkState extends State<MPAElink> {
           ),
           TextField(
               controller: textController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 subname = value;
               }),
@@ -367,7 +379,8 @@ class _MPAElinkState extends State<MPAElink> {
           ),
           TextField(
               controller: textController1,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+              textAlign: TextAlign.center,
               onChanged: (valuee) {
                 NotesLink = valuee;
               }),
@@ -427,7 +440,8 @@ class _MElinkState extends State<MElink> {
           ),
           TextField(
               controller: textController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 subname = value;
               }),
@@ -445,7 +459,8 @@ class _MElinkState extends State<MElink> {
           ),
           TextField(
               controller: textController1,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+              textAlign: TextAlign.center,
               onChanged: (valuee) {
                 NotesLink = valuee;
               }),
@@ -505,7 +520,8 @@ class _MAClinkState extends State<MAClink> {
           ),
           TextField(
               controller: textController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 subname = value;
               }),
@@ -523,7 +539,8 @@ class _MAClinkState extends State<MAClink> {
           ),
           TextField(
               controller: textController1,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+              textAlign: TextAlign.center,
               onChanged: (valuee) {
                 NotesLink = valuee;
               }),
@@ -583,7 +600,8 @@ class _BTlinkState extends State<BTlink> {
           ),
           TextField(
               controller: textController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 subname = value;
               }),
@@ -601,7 +619,8 @@ class _BTlinkState extends State<BTlink> {
           ),
           TextField(
               controller: textController1,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+              textAlign: TextAlign.center,
               onChanged: (valuee) {
                 NotesLink = valuee;
               }),
@@ -662,7 +681,8 @@ class _OTHERSlinkState extends State<OTHERSlink> {
           ),
           TextField(
               controller: textController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 subname = value;
               }),
@@ -680,7 +700,8 @@ class _OTHERSlinkState extends State<OTHERSlink> {
           ),
           TextField(
               controller: textController1,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+              textAlign: TextAlign.center,
               onChanged: (valuee) {
                 NotesLink = valuee;
               }),
