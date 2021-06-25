@@ -23,6 +23,9 @@ dependencies:
   cloud_firestore:
   url_launcher: ^6.0.7
   flutter_linkify: ^5.0.2
+  firebase_auth:
+  animated_text_kit:
+  modal_progress_hud:
 
 dev_dependencies:
   flutter_test:
