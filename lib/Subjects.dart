@@ -13,110 +13,151 @@ class _NotesState extends State<Notes> {
         title: Text("Feed"),
       ),
       body: ListView(children: <Widget>[
-        ListTile(
-          tileColor: Colors.grey.shade100,
-          title: Text(
-            "COE",
-            style: TextStyle(fontSize: 25),
+        Card(
+         elevation: 6,
+          child:
+      ListTile(
+            tileColor: Colors.grey.shade100,
+            title: Text(
+              "COE",
+              style: TextStyle(fontSize: 25),
+            ),
+            contentPadding:
+            EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => CSroute()));
+            },
           ),
-          contentPadding:
-          EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => CSroute()));
-          },
         ),
-        ListTile(
-          tileColor: Colors.grey.shade100,
-          title: Text(
-            "ECE",
-            style: TextStyle(fontSize: 25),
+        Card(
+          elevation: 6,
+          child: ListTile(
+            tileColor: Colors.grey.shade100,
+            title: Text(
+              "ECE",
+              style: TextStyle(fontSize: 25),
+            ),
+            contentPadding:
+            EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ECEroute()));
+            },
           ),
-          contentPadding:
-          EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ECEroute()));
-          },
         ),
-        ListTile(
-          tileColor: Colors.grey.shade100,
-          title: Text(
-            "IT",
-            style: TextStyle(fontSize: 25),
+        Card(
+          elevation: 6,
+          child: ListTile(
+            tileColor: Colors.grey.shade100,
+            title: Text(
+              "IT",
+              style: TextStyle(fontSize: 25),
+            ),
+            contentPadding:
+            EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ITroute()));
+            },
           ),
-          contentPadding:
-          EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ITroute()));
-          },
         ),
-        ListTile(
-          tileColor: Colors.grey.shade100,
-          title: Text(
-            "ICE",
-            style: TextStyle(fontSize: 25),
+        Card(
+          elevation: 6,
+          child: ListTile(
+            tileColor: Colors.grey.shade100,
+            title: Text(
+              "ICE",
+              style: TextStyle(fontSize: 25),
+            ),
+            contentPadding:
+            EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ICEroute()));
+            },
           ),
-          contentPadding:
-          EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ICEroute()));
-          },
         ),
-        ListTile(
-          dense: true,
-          tileColor: Colors.grey.shade100,
-          title: Text(
-            "MPAE",
-            style: TextStyle(fontSize: 25),
+        Card(
+          elevation: 6,
+          child: ListTile(
+            dense: true,
+            tileColor: Colors.grey.shade100,
+            title: Text(
+              "MPAE",
+              style: TextStyle(fontSize: 25),
+            ),
+            contentPadding:
+            EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MPAEroute()));
+            },
           ),
-          contentPadding:
-          EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MPAEroute()));
-          },
         ),
-        ListTile(
-          tileColor: Colors.grey.shade100,
-          title: Text(
-            "ME",
-            style: TextStyle(fontSize: 25),
+        Card(
+          elevation: 6,
+          child: ListTile(
+            tileColor: Colors.grey.shade100,
+            title: Text(
+              "ME",
+              style: TextStyle(fontSize: 25),
+            ),
+            contentPadding:
+            EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MEroute()));
+            },
           ),
-          contentPadding:
-          EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MEroute()));
-          },
         ),
-        ListTile(
-          tileColor: Colors.grey.shade100,
-          title: Text(
-            "MAC",
-            style: TextStyle(fontSize: 25),
+        Card(
+          elevation: 6,
+          child: ListTile(
+            tileColor: Colors.grey.shade100,
+            title: Text(
+              "MAC",
+              style: TextStyle(fontSize: 25),
+            ),
+            contentPadding:
+            EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MACroute()));
+            },
           ),
-          contentPadding:
-          EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MACroute()));
-          },
         ),
-        ListTile(
-          tileColor: Colors.grey.shade100,
-          title: Text(
-            "BT",
-            style: TextStyle(fontSize: 25),
+        Card(
+          elevation: 6,
+          child: ListTile(
+            tileColor: Colors.grey.shade100,
+            title: Text(
+              "BT",
+              style: TextStyle(fontSize: 25),
+            ),
+            contentPadding:
+            EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => BTroute()));
+            },
           ),
-          contentPadding:
-          EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => BTroute()));
-          },
+        ),
+        Card(
+          elevation: 6,
+          child: ListTile(
+            tileColor: Colors.grey.shade100,
+            title: Text(
+              "OTHERS",
+              style: TextStyle(fontSize: 25),
+            ),
+            contentPadding:
+            EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => OTHERSroute()));
+            },
+          ),
         ),
       ]),
     );

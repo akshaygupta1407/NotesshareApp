@@ -625,3 +625,82 @@ class _BTlinkState extends State<BTlink> {
     );
   }
 }
+
+class OTHERSlink extends StatefulWidget {
+
+  @override
+  _OTHERSlinkState createState() => _OTHERSlinkState();
+}
+
+class _OTHERSlinkState extends State<OTHERSlink> {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  String NotesLink;
+
+  String subname;
+
+  final textController = TextEditingController();
+  final textController1 = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Upload"),
+      ),
+      body: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 45,
+            width: 10,
+          ),
+          Text(
+            'Category',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          SizedBox(
+            height: 45,
+            width: 10,
+          ),
+          TextField(
+              controller: textController,
+              decoration: InputDecoration(labelText: 'Title'),
+              onChanged: (value) {
+                subname = value;
+              }),
+          SizedBox(
+            height: 35,
+            width: 10,
+          ),
+          Text(
+            'Add URL',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          SizedBox(
+            height: 35,
+            width: 10,
+          ),
+          TextField(
+              controller: textController1,
+              decoration: InputDecoration(labelText: 'Title'),
+              onChanged: (valuee) {
+                NotesLink = valuee;
+              }),
+          SizedBox(
+            height: 35,
+            width: 10,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              firestore
+                  .collection('OTHERSdata')
+                  .add({'text': subname, 'link': NotesLink});
+              Navigator.pop(context);
+            },
+            child: const Text('Upload'),
+          ),
+          // add some space
+          SizedBox(height: 30),
+        ],
+      ),
+    );
+  }
+}

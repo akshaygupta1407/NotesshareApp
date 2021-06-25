@@ -26,16 +26,19 @@ class _CSrouteState extends State<CSroute> {
             final docs = snapshot.data.docs;
             return ListView.builder(
               itemCount: docs.length,
-              itemBuilder: (_, i) {
+              itemBuilder:(_, i) {
                 final data = docs[i].data();
-                return ListTile(
-                  title: Text(data['text']),
-                  //subtitle: Text(data['link']),
+                return Card(
+                  child: ListTile(
+                    title: Text(data['text']),
+
+                    //subtitle: Text(data['link']),
 //
-                  onTap: () async {
-                     String url = data['link'];
-                    await launch(url);
-                  },
+                    onTap: () async {
+                       String url = data['link'];
+                      await launch(url);
+                    },
+                  ),
                 );
               },
             );
@@ -50,7 +53,7 @@ class _CSrouteState extends State<CSroute> {
         },
         child: Icon(Icons.add),
         elevation: 16,
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.blue,
       ),
     );
   }
@@ -81,14 +84,16 @@ class _ECErouteState extends State<ECEroute> {
               itemCount: docs.length,
               itemBuilder: (_, i) {
                 final data = docs[i].data();
-                return ListTile(
-                  title: Text(data['text']),
-                  //subtitle: Text(data['link']),
+                return Card(
+                  child: ListTile(
+                    title: Text(data['text']),
+                    //subtitle: Text(data['link']),
 
-                  onTap: () async {
-                    String url = data['link'];
-                    await launch(url);
-                  },
+                    onTap: () async {
+                      String url = data['link'];
+                      await launch(url);
+                    },
+                  ),
                 );
               },
             );
@@ -103,7 +108,7 @@ class _ECErouteState extends State<ECEroute> {
         },
         child: Icon(Icons.add),
         elevation: 16,
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.blue,
       ),
     );
   }
@@ -129,14 +134,16 @@ class ITroute extends StatelessWidget {
               itemCount: docs.length,
               itemBuilder: (_, i) {
                 final data = docs[i].data();
-                return ListTile(
-                  title: Text(data['text']),
-                  //subtitle: Text(data['link']),
+                return Card(
+                  child: ListTile(
+                    title: Text(data['text']),
+                    //subtitle: Text(data['link']),
 
-                  onTap: () async {
-                    String url = data['link'];
-                    await launch(url);
-                  },
+                    onTap: () async {
+                      String url = data['link'];
+                      await launch(url);
+                    },
+                  ),
                 );
               },
             );
@@ -151,7 +158,7 @@ class ITroute extends StatelessWidget {
         },
         child: Icon(Icons.add),
         elevation: 16,
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.blue,
       ),
     );
   }
@@ -177,14 +184,16 @@ class ICEroute extends StatelessWidget {
               itemCount: docs.length,
               itemBuilder: (_, i) {
                 final data = docs[i].data();
-                return ListTile(
-                  title: Text(data['text']),
-                  //subtitle: Text(data['link']),
+                return Card(
+                  child: ListTile(
+                    title: Text(data['text']),
+                    //subtitle: Text(data['link']),
 
-                  onTap: () async {
-                    String url = data['link'];
-                    await launch(url);
-                  },
+                    onTap: () async {
+                      String url = data['link'];
+                      await launch(url);
+                    },
+                  ),
                 );
               },
             );
@@ -199,7 +208,7 @@ class ICEroute extends StatelessWidget {
         },
         child: Icon(Icons.add),
         elevation: 16,
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.blue,
       ),
     );
   }
@@ -225,14 +234,16 @@ class MPAEroute extends StatelessWidget {
               itemCount: docs.length,
               itemBuilder: (_, i) {
                 final data = docs[i].data();
-                return ListTile(
-                  title: Text(data['text']),
-                  //subtitle: Text(data['link']),
+                return Card(
+                  child: ListTile(
+                    title: Text(data['text']),
+                    //subtitle: Text(data['link']),
 
-                  onTap: () async {
-                    String url = data['link'];
-                    await launch(url);
-                  },
+                    onTap: () async {
+                      String url = data['link'];
+                      await launch(url);
+                    },
+                  ),
                 );
               },
             );
@@ -247,7 +258,7 @@ class MPAEroute extends StatelessWidget {
         },
         child: Icon(Icons.add),
         elevation: 16,
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.blue,
       ),
     );
   }
@@ -273,14 +284,16 @@ class MEroute extends StatelessWidget {
               itemCount: docs.length,
               itemBuilder: (_, i) {
                 final data = docs[i].data();
-                return ListTile(
-                  title: Text(data['text']),
-                  //subtitle: Text(data['link']),
+                return Card(
+                  child: ListTile(
+                    title: Text(data['text']),
+                    //subtitle: Text(data['link']),
 
-                  onTap: () async {
-                    String url = data['link'];
-                    await launch(url);
-                  },
+                    onTap: () async {
+                      String url = data['link'];
+                      await launch(url);
+                    },
+                  ),
                 );
               },
             );
@@ -295,7 +308,7 @@ class MEroute extends StatelessWidget {
         },
         child: Icon(Icons.add),
         elevation: 16,
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.blue,
       ),
     );
   }
@@ -321,14 +334,16 @@ class MACroute extends StatelessWidget {
               itemCount: docs.length,
               itemBuilder: (_, i) {
                 final data = docs[i].data();
-                return ListTile(
-                  title: Text(data['text']),
-                  //subtitle: Text(data['link']),
+                return Card(
+                  child: ListTile(
+                    title: Text(data['text']),
+                    //subtitle: Text(data['link']),
 
-                  onTap: () async {
-                    String url = data['link'];
-                    await launch(url);
-                  },
+                    onTap: () async {
+                      String url = data['link'];
+                      await launch(url);
+                    },
+                  ),
                 );
               },
             );
@@ -343,7 +358,7 @@ class MACroute extends StatelessWidget {
         },
         child: Icon(Icons.add),
         elevation: 16,
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.blue,
       ),
     );
   }
@@ -369,14 +384,16 @@ class BTroute extends StatelessWidget {
               itemCount: docs.length,
               itemBuilder: (_, i) {
                 final data = docs[i].data();
-                return ListTile(
-                  title: Text(data['text']),
-                  //subtitle: Text(data['link']),
+                return Card(
+                  child: ListTile(
+                    title: Text(data['text']),
+                    //subtitle: Text(data['link']),
 
-                  onTap: () async {
-                    String url = data['link'];
-                    await launch(url);
-                  },
+                    onTap: () async {
+                      String url = data['link'];
+                      await launch(url);
+                    },
+                  ),
                 );
               },
             );
@@ -391,7 +408,57 @@ class BTroute extends StatelessWidget {
         },
         child: Icon(Icons.add),
         elevation: 16,
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.blue,
+      ),
+    );
+  }
+}
+
+class OTHERSroute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("OTHERS"),
+      ),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('OTHERSdata').snapshots(),
+        builder: (_, snapshot) {
+          if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            final docs = snapshot.data.docs;
+            return ListView.builder(
+              itemCount: docs.length,
+              itemBuilder: (_, i) {
+                final data = docs[i].data();
+                return Card(
+                  child: ListTile(
+                    title: Text(data['text']),
+                    //subtitle: Text(data['link']),
+
+                    onTap: () async {
+                      String url = data['link'];
+                      await launch(url);
+                    },
+                  ),
+                );
+              },
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => OTHERSlink()));
+        },
+        child: Icon(Icons.add),
+        elevation: 16,
+        backgroundColor: Colors.blue,
       ),
     );
   }

@@ -29,7 +29,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                "       Register",style: TextStyle(
+                "Register",textAlign: TextAlign.center,style: TextStyle(
                 fontSize: 45.0,
                 fontWeight: FontWeight.w900,
               ),
