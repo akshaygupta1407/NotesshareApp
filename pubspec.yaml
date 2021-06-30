@@ -26,6 +26,7 @@ dependencies:
   firebase_auth:
   animated_text_kit:
   modal_progress_hud:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

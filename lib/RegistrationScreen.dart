@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class RegistrationScreen extends StatefulWidget {
   static String id = 'registration_screen';
   @override
@@ -73,7 +74,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           email: email, password: password);
                       if(newUser!=null)
                       {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
+                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        prefs.setString('email', email);
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
                       }
                       setState(() {
                         showSpinner = false;
@@ -83,7 +86,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     catch(e){
                       print(e);
                     }
-                  })
+                  }
+                  ),
             ],
           ),
         ),

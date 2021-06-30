@@ -1,3 +1,5 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
@@ -70,6 +72,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   final user = await _auth.signInWithEmailAndPassword(
                       email: email, password: password);
                   if (user != null) {
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.setString('email', email);
                     Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
                   }
                   showspinner = false;
