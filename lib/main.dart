@@ -33,5 +33,6 @@ Future<void> main() async{
   await Firebase.initializeApp();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('email');
-  runApp(MaterialApp(home: email==null ? welcomepage() : Notes()));
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,home: email==null ? welcomepage() : Notes()));
 }

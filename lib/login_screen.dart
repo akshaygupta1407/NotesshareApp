@@ -1,5 +1,4 @@
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
@@ -19,71 +18,85 @@ class _LoginScreenState extends State<LoginScreen> {
   bool showspinner = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: ModalProgressHUD(
-        inAsyncCall: showspinner,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Text(
-                "Login",textAlign: TextAlign.center,style: TextStyle(
-                fontSize: 45.0,
-                fontWeight: FontWeight.w900,
-              ),
-              ),
-              SizedBox(
-                height: 48.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  //Do something with the user input.
-                  email = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  //Do something with the user input.
-                  password = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password'),
-              ),
-              SizedBox(
-                height: 24.0,
-              ),
-              RoundedButton(title: 'Log In',
-                  colour: Colors.lightBlueAccent,
-                  onPressed: ()async{
-                setState(() {
-                  showspinner = true;
-                });
-                try {
-                  final user = await _auth.signInWithEmailAndPassword(
-                      email: email, password: password);
-                  if (user != null) {
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                    prefs.setString('email', email);
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
-                  }
-                  showspinner = false;
-                }
-                catch(e)
-                    {
-                      print(e);
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: ModalProgressHUD(
+          inAsyncCall: showspinner,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(
+                  "Login",textAlign: TextAlign.center,style: TextStyle(
+                  fontSize: 45.0,
+                  fontWeight: FontWeight.w900,
+                ),
+                ),
+                SizedBox(
+                  height: 48.0,
+                ),
+                TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    //Do something with the user input.
+                    email = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your college email'),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                TextField(
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    //Do something with the user input.
+                    password = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password'),
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                RoundedButton(title: 'Log In',
+                    colour: Colors.black54,
+                    onPressed: ()async{
+                  setState(() {
+                    showspinner = true;
+
+                  });
+                  try {
+                    final user = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+                    if (user != null) {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      prefs.setString('email', email);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
                     }
-                  }),
-            ],
+                    showspinner = false;
+                  }
+                  catch(e)
+                      {
+                        showDialog(context: context, builder: (context) => AlertDialog(
+                          title: Text("Email or Password is Incorrect"),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text("OK"),
+                              onPressed: () => Navigator.pop(context, false),
+                            ),
+                          ],
+                        ));
+                        setState(() {
+                          showspinner = false;
+                        });
+                      }
+                    }),
+              ],
+            ),
           ),
         ),
       ),
