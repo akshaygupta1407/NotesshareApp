@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-
 import 'Subjects.dart';
 import 'constants.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   String password;
   bool showSpinner = false;
   //User user;
-
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +52,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     email = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your college email'),
+                      hintText: 'Enter your email id'),
                 ),
                 SizedBox(
                   height: 8.0,
@@ -76,9 +74,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     title: 'Register',
                     colour: Colors.black,
                     onPressed: () async {
-
-
-
                       setState(() {
                         showSpinner = true;
                       });
