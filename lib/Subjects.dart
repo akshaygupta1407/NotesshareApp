@@ -14,23 +14,6 @@ class _NotesState extends State<Notes> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   Future<bool> _onBackPressed() {
     return SystemNavigator.pop();
-      // showDialog(
-      //   context: context,
-      //   builder: (context) => AlertDialog(
-      //         title: Text("Do you really want to exit?"),
-      //         actions: <Widget>[
-      //           FlatButton(
-      //             child: Text("No"),
-      //             onPressed: () => Navigator.pop(context, false),
-      //           ),
-      //           FlatButton(
-      //               child: Text("Yes"),
-      //               onPressed: () {
-      //                 //Navigator.pop(context, true);
-      //                 SystemNavigator.pop();
-      //               }),
-      //         ],
-      //       ));
   }
 Future<void> _signOut(BuildContext context) async
 {

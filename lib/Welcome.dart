@@ -13,23 +13,6 @@ class welcomepage extends StatefulWidget {
 class _welcomepageState extends State<welcomepage> {
   Future<bool> _onBackPressed() {
     return SystemNavigator.pop();
-    // return showDialog(
-    //     context: context,
-    //     builder: (context) => AlertDialog(
-    //       title: Text("Do you really want to exit?"),
-    //       actions: <Widget>[
-    //         FlatButton(
-    //           child: Text("No"),
-    //           onPressed: () => Navigator.pop(context, false),
-    //         ),
-    //         FlatButton(
-    //             child: Text("Yes"),
-    //             onPressed: () {
-    //               //Navigator.pop(context, true);
-    //               SystemNavigator.pop();
-    //             }),
-    //       ],
-    //     ));
   }
   @override
   Widget build(BuildContext context) {
