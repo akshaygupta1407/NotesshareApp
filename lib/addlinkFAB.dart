@@ -5,20 +5,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-
-
 class CSlink extends StatefulWidget {
   @override
   _CSlinkState createState() => _CSlinkState();
 }
 
 class _CSlinkState extends State<CSlink> {
+  Widget okButton = TextButton(
+    child: Text("OK"),
+    onPressed: () {},
+  );
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   String NotesLink;
   String subname;
   final textController = TextEditingController();
   final textController1 = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +49,7 @@ class _CSlinkState extends State<CSlink> {
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   subname = value;
-                }
-
-                ),
+                }),
             SizedBox(
               height: 35,
               width: 10,
@@ -77,16 +76,40 @@ class _CSlinkState extends State<CSlink> {
             FlatButton(
               shape: StadiumBorder(),
               color: Colors.black54,
-              onPressed: () async{
+              onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var email = prefs.getString('email');
-                firestore
-                    .collection('CSdata')
-                    .add({'text': subname, 'link': NotesLink,'email':email});
+                if (subname == null || NotesLink == null) {
+                  return showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Text Field can't be empty"),
+                          actions: <Widget>[
+                        TextButton(
+                        child: const Text('OK'),
+                        onPressed: () {
+                        Navigator.of(context).pop();
+                        },),
+                          ],
+                        );
+                      });
+                }
+                else {
+                  String s = email.substring(0, email.indexOf('@'));
+                  firestore.collection('CSdata').add({
+                    'text': subname,
+                    'link': NotesLink,
+                    'email': email,
+                    'name': s
+                  });
+                }
                 Navigator.pop(context);
               },
-              child: const Text('Upload',style: TextStyle(color: Colors.white),),
-
+              child: const Text(
+                'Upload',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             // add some space
             SizedBox(height: 30),
@@ -165,15 +188,40 @@ class _ECElinkState extends State<ECElink> {
             FlatButton(
               shape: StadiumBorder(),
               color: Colors.black54,
-              onPressed: () async{
+              onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var email = prefs.getString('email');
-                firestore
-                    .collection('ECEdata')
-                    .add({'text': subname, 'link': NotesLink,'email':email});
+                if (subname == null || NotesLink == null) {
+                  return showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Text Field can't be empty"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },),
+                          ],
+                        );
+                      });
+                }
+                else {
+                  String s = email.substring(0, email.indexOf('@'));
+                  firestore.collection('ECEdata').add({
+                    'text': subname,
+                    'link': NotesLink,
+                    'email': email,
+                    'name': s
+                  });
+                }
                 Navigator.pop(context);
               },
-              child: const Text('Upload',style: TextStyle(color: Colors.white),),
+              child: const Text(
+                'Upload',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             // add some space
             SizedBox(height: 30),
@@ -252,15 +300,40 @@ class _ITlinkState extends State<ITlink> {
             FlatButton(
               shape: StadiumBorder(),
               color: Colors.black54,
-              onPressed: ()async {
+              onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var email = prefs.getString('email');
-                firestore
-                    .collection('ITdata')
-                    .add({'text': subname, 'link': NotesLink,'email':email});
+                if (subname == null || NotesLink == null) {
+                  return showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Text Field can't be empty"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },),
+                          ],
+                        );
+                      });
+                }
+                else {
+                  String s = email.substring(0, email.indexOf('@'));
+                  firestore.collection('ITdata').add({
+                    'text': subname,
+                    'link': NotesLink,
+                    'email': email,
+                    'name': s
+                  });
+                }
                 Navigator.pop(context);
               },
-              child: const Text('Upload',style: TextStyle(color: Colors.white),),
+              child: const Text(
+                'Upload',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             // add some space
             SizedBox(height: 30),
@@ -339,15 +412,40 @@ class _ICElinkState extends State<ICElink> {
             FlatButton(
               shape: StadiumBorder(),
               color: Colors.black54,
-              onPressed: () async{
+              onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var email = prefs.getString('email');
-                firestore
-                    .collection('ICEdata')
-                    .add({'text': subname, 'link': NotesLink,'email':email});
+                if (subname == null || NotesLink == null) {
+                  return showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Text Field can't be empty"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },),
+                          ],
+                        );
+                      });
+                }
+                else
+                  {
+                String s = email.substring(0, email.indexOf('@'));
+                firestore.collection('ICEdata').add({
+                  'text': subname,
+                  'link': NotesLink,
+                  'email': email,
+                  'name': s
+                });}
                 Navigator.pop(context);
               },
-              child: const Text('Upload',style: TextStyle(color: Colors.white),),
+              child: const Text(
+                'Upload',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             // add some space
             SizedBox(height: 30),
@@ -426,15 +524,40 @@ class _MPAElinkState extends State<MPAElink> {
             FlatButton(
               shape: StadiumBorder(),
               color: Colors.black54,
-              onPressed: () async{
+              onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var email = prefs.getString('email');
-                firestore
-                    .collection('MPAEdata')
-                    .add({'text': subname, 'link': NotesLink,'email':email});
+                if (subname == null || NotesLink == null) {
+                  return showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Text Field can't be empty"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },),
+                          ],
+                        );
+                      });
+                }
+                else
+                  {
+                String s = email.substring(0, email.indexOf('@'));
+                firestore.collection('MPAEdata').add({
+                  'text': subname,
+                  'link': NotesLink,
+                  'email': email,
+                  'name': s
+                });}
                 Navigator.pop(context);
               },
-              child: const Text('Upload',style: TextStyle(color: Colors.white),),
+              child: const Text(
+                'Upload',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             // add some space
             SizedBox(height: 30),
@@ -513,15 +636,40 @@ class _MElinkState extends State<MElink> {
             FlatButton(
               shape: StadiumBorder(),
               color: Colors.black54,
-              onPressed: () async{
+              onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var email = prefs.getString('email');
-                firestore
-                    .collection('MEdata')
-                    .add({'text': subname, 'link': NotesLink,'email':email});
+                if (subname == null || NotesLink == null) {
+                  return showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Text Field can't be empty"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },),
+                          ],
+                        );
+                      });
+                }
+                else
+                  {
+                String s = email.substring(0, email.indexOf('@'));
+                firestore.collection('MEdata').add({
+                  'text': subname,
+                  'link': NotesLink,
+                  'email': email,
+                  'name': s
+                });}
                 Navigator.pop(context);
               },
-              child: const Text('Upload',style: TextStyle(color: Colors.white),),
+              child: const Text(
+                'Upload',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             // add some space
             SizedBox(height: 30),
@@ -600,15 +748,40 @@ class _MAClinkState extends State<MAClink> {
             FlatButton(
               shape: StadiumBorder(),
               color: Colors.black54,
-              onPressed: () async{
+              onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var email = prefs.getString('email');
-                firestore
-                    .collection('MACdata')
-                    .add({'text': subname, 'link': NotesLink,'email':email});
+                if (subname == null || NotesLink == null) {
+                  return showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Text Field can't be empty"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },),
+                          ],
+                        );
+                      });
+                }
+                else
+                  {
+                String s = email.substring(0, email.indexOf('@'));
+                firestore.collection('MACdata').add({
+                  'text': subname,
+                  'link': NotesLink,
+                  'email': email,
+                  'name': s
+                });}
                 Navigator.pop(context);
               },
-              child: const Text('Upload',style: TextStyle(color: Colors.white),),
+              child: const Text(
+                'Upload',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             // add some space
             SizedBox(height: 30),
@@ -687,15 +860,40 @@ class _BTlinkState extends State<BTlink> {
             FlatButton(
               shape: StadiumBorder(),
               color: Colors.black54,
-              onPressed: ()async {
+              onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var email = prefs.getString('email');
-                firestore
-                    .collection('BTdata')
-                    .add({'text': subname, 'link': NotesLink,'email':email});
+                if (subname == null || NotesLink == null) {
+                  return showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Text Field can't be empty"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },),
+                          ],
+                        );
+                      });
+                }
+                else
+                  {
+                String s = email.substring(0, email.indexOf('@'));
+                firestore.collection('BTdata').add({
+                  'text': subname,
+                  'link': NotesLink,
+                  'email': email,
+                  'name': s
+                });}
                 Navigator.pop(context);
               },
-              child: const Text('Upload',style: TextStyle(color: Colors.white),),
+              child: const Text(
+                'Upload',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             // add some space
             SizedBox(height: 30),
@@ -707,7 +905,6 @@ class _BTlinkState extends State<BTlink> {
 }
 
 class OTHERSlink extends StatefulWidget {
-
   @override
   _OTHERSlinkState createState() => _OTHERSlinkState();
 }
@@ -775,15 +972,40 @@ class _OTHERSlinkState extends State<OTHERSlink> {
             FlatButton(
               shape: StadiumBorder(),
               color: Colors.black54,
-              onPressed: () async{
+              onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var email = prefs.getString('email');
-                firestore
-                    .collection('OTHERSdata')
-                    .add({'text': subname, 'link': NotesLink,'email':email});
+                if (subname == null || NotesLink == null) {
+                  return showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Text Field can't be empty"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },),
+                          ],
+                        );
+                      });
+                }
+                else
+                  {
+                String s = email.substring(0, email.indexOf('@'));
+                firestore.collection('OTHERSdata').add({
+                  'text': subname,
+                  'link': NotesLink,
+                  'email': email,
+                  'name': s
+                });}
                 Navigator.pop(context);
               },
-              child: const Text('Upload',style: TextStyle(color: Colors.white),),
+              child: const Text(
+                'Upload',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             // add some space
             SizedBox(height: 30),

@@ -40,6 +40,7 @@ Future<void> _signOut(BuildContext context) async
               })
             ],
           ),
+          backgroundColor: Colors.grey.shade300,
           body: ListView(children: <Widget>[
             Card(
               elevation: 6,
