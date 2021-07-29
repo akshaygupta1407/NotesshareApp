@@ -67,6 +67,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Enter your password'),
                 ),
+                // SizedBox(
+                //   height: 15.0,
+                // ),
+                Center(child: Text("Note: Enter minimum 6 digit password!")),
                 SizedBox(
                   height: 24.0,
                 ),
@@ -75,7 +79,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     colour: Colors.black,
                     onPressed: () async {
                       setState(() {
-                        showSpinner = true;
+                        showSpinner = false;
+                        if(password.length <6)
+                          {
+                            print("Error");
+                          }
                       });
                       try {
                         final newUser =
@@ -89,10 +97,43 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               MaterialPageRoute(builder: (context) => Notes()));
                         }
                         setState(() {
-                          showSpinner = false;
+                          showSpinner = true;
                         });
                       } catch (e) {
                         print(e);
+                        if(password.length <6)
+                          {
+                            showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+
+                                  title: Text("Length of Password is less than 6! "),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      child: Text("OK"),
+                                      onPressed: () =>
+                                          Navigator.pop(context, true),
+                                    ),
+                                  ],
+                                ));
+                          }
+                        else {
+                          showDialog(
+                              context: context,
+                              builder: (context) =>
+                                  AlertDialog(
+
+                                    title: Text(
+                                        "This Email is already registered!"),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text("OK"),
+                                        onPressed: () =>
+                                            Navigator.pop(context, true),
+                                      ),
+                                    ],
+                                  ));
+                        }
                       }
                     }),
               ],

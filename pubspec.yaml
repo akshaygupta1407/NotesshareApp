@@ -41,5 +41,20 @@ flutter:
 
 
   uses-material-design: true
+  assets:
+    - assets/coe.jpg
+    - assets/ece.jpg
+    - assets/bt.jpg
+    - assets/ice.jpg
+    - assets/it.jpg
+    - assets/mac.jpg
+    - assets/me.jpg
+    - assets/mpae.jpg
+    - assets/others.jpg
+#  fonts:
+#    - family: MonteCarle
+#      fonts:
+#        - asset: fonts/MonteCarlo-Regular.ttf
+
 
 

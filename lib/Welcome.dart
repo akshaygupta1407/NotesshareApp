@@ -20,19 +20,20 @@ class _welcomepageState extends State<welcomepage> {
       onWillPop: _onBackPressed,
       child: SafeArea(
         child: Scaffold(
-          // appBar: AppBar(
-          //   title: Text("Welcome"),
-          // ),
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
+                // Container(
+                //   child: Image(image: NetworkImage("https://i0.wp.com/blog.lulu.com/wp-content/uploads/2018/11/112718_GIFs-Blog.gif?fit=1000%2C550&ssl=1"),height: 50,width: 50,),
+                // ),
                 Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "      NotesApp",style: TextStyle(
+                      "NotezEzzy",style: TextStyle(
                       fontSize: 45.0,
                          fontWeight: FontWeight.w900,
                     ),

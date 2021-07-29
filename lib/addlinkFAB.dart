@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -29,91 +30,100 @@ class _CSlinkState extends State<CSlink> {
           title: Text("Upload"),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            Text(
-              'Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            TextField(
-                controller: textController,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  subname = value;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            Text(
-              'Add URL',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            TextField(
-                controller: textController1,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
-                textAlign: TextAlign.center,
-                onChanged: (valuee) {
-                  NotesLink = valuee;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            FlatButton(
-              shape: StadiumBorder(),
-              color: Colors.black54,
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var email = prefs.getString('email');
-                if (subname == null || NotesLink == null) {
-                  return showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Text Field can't be empty"),
-                          actions: <Widget>[
-                        TextButton(
-                        child: const Text('OK'),
-                        onPressed: () {
-                        Navigator.of(context).pop();
-                        },),
-                          ],
-                        );
-                      });
-                }
-                else {
-                  String s = email.substring(0, email.indexOf('@'));
-                  firestore.collection('CSdata').add({
-                    'text': subname,
-                    'link': NotesLink,
-                    'email': email,
-                    'name': s
-                  });
-                }
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Upload',
-                style: TextStyle(color: Colors.white),
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Column(
+
+            children: <Widget>[
+              SizedBox(
+                height: 45,
+                width: 10,
               ),
-            ),
-            // add some space
-            SizedBox(height: 30),
-          ],
+              Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                width: 10,
+              ),
+              TextField(
+
+                  controller: textController,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    subname = value;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              Text(
+                'Add URL',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController1,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+                  textAlign: TextAlign.center,
+                  onChanged: (valuee) {
+                    NotesLink = valuee;
+                  }),
+
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              FlatButton.icon(
+                shape: StadiumBorder(),
+                color: Colors.black54,
+                onPressed: () async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  var email = prefs.getString('email');
+                  if (subname == null || NotesLink == null) {
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Text Field can't be empty"),
+                            actions: <Widget>[
+                          TextButton(
+                          child: const Text('OK'),
+                          onPressed: () {
+                          Navigator.of(context).pop();
+                          },),
+                            ],
+                          );
+                        });
+                  }
+                  else {
+                    String s = email.substring(0, email.indexOf('@'));
+                    firestore.collection('CSdata').add({
+                      'text': subname,
+                      'link': NotesLink,
+                      'email': email,
+                      'name': s
+                    });
+                  }
+                  Navigator.pop(context);
+                },
+                label: Text("Upload",style: TextStyle(color: Colors.white),),
+                icon: Icon(Icons.upload_rounded,color: Colors.white,),
+                // const Text(
+                //   'Upload',
+                //   style: TextStyle(color: Colors.white,),
+                // ),
+              ),
+              // add some space
+              SizedBox(height: 20),
+
+            ],
+          ),
         ),
       ),
     );
@@ -141,91 +151,96 @@ class _ECElinkState extends State<ECElink> {
           title: Text("Upload"),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            Text(
-              'Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            TextField(
-                controller: textController,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  subname = value;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            Text(
-              'Add URL',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            TextField(
-                controller: textController1,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
-                textAlign: TextAlign.center,
-                onChanged: (valuee) {
-                  NotesLink = valuee;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            FlatButton(
-              shape: StadiumBorder(),
-              color: Colors.black54,
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var email = prefs.getString('email');
-                if (subname == null || NotesLink == null) {
-                  return showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Text Field can't be empty"),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },),
-                          ],
-                        );
-                      });
-                }
-                else {
-                  String s = email.substring(0, email.indexOf('@'));
-                  firestore.collection('ECEdata').add({
-                    'text': subname,
-                    'link': NotesLink,
-                    'email': email,
-                    'name': s
-                  });
-                }
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Upload',
-                style: TextStyle(color: Colors.white),
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 45,
+                width: 10,
               ),
-            ),
-            // add some space
-            SizedBox(height: 30),
-          ],
+              Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    subname = value;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              Text(
+                'Add URL',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController1,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+                  textAlign: TextAlign.center,
+                  onChanged: (valuee) {
+                    NotesLink = valuee;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              FlatButton.icon(
+                shape: StadiumBorder(),
+                color: Colors.black54,
+                onPressed: () async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  var email = prefs.getString('email');
+                  if (subname == null || NotesLink == null) {
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Text Field can't be empty"),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },),
+                            ],
+                          );
+                        });
+                  }
+                  else {
+                    String s = email.substring(0, email.indexOf('@'));
+                    firestore.collection('ECEdata').add({
+                      'text': subname,
+                      'link': NotesLink,
+                      'email': email,
+                      'name': s
+                    });
+                  }
+                  Navigator.pop(context);
+                },
+                label: Text("Upload",style: TextStyle(color: Colors.white),),
+                icon: Icon(Icons.upload_rounded,color: Colors.white,),
+                // child: const Text(
+                //   'Upload',
+                //   style: TextStyle(color: Colors.white),
+                // ),
+              ),
+              // add some space
+              SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
@@ -253,91 +268,96 @@ class _ITlinkState extends State<ITlink> {
           title: Text("Upload"),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            Text(
-              'Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            TextField(
-                controller: textController,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  subname = value;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            Text(
-              'Add URL',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            TextField(
-                controller: textController1,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
-                textAlign: TextAlign.center,
-                onChanged: (valuee) {
-                  NotesLink = valuee;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            FlatButton(
-              shape: StadiumBorder(),
-              color: Colors.black54,
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var email = prefs.getString('email');
-                if (subname == null || NotesLink == null) {
-                  return showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Text Field can't be empty"),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },),
-                          ],
-                        );
-                      });
-                }
-                else {
-                  String s = email.substring(0, email.indexOf('@'));
-                  firestore.collection('ITdata').add({
-                    'text': subname,
-                    'link': NotesLink,
-                    'email': email,
-                    'name': s
-                  });
-                }
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Upload',
-                style: TextStyle(color: Colors.white),
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 45,
+                width: 10,
               ),
-            ),
-            // add some space
-            SizedBox(height: 30),
-          ],
+              Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    subname = value;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              Text(
+                'Add URL',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController1,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+                  textAlign: TextAlign.center,
+                  onChanged: (valuee) {
+                    NotesLink = valuee;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              FlatButton.icon(
+                shape: StadiumBorder(),
+                color: Colors.black54,
+                onPressed: () async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  var email = prefs.getString('email');
+                  if (subname == null || NotesLink == null) {
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Text Field can't be empty"),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },),
+                            ],
+                          );
+                        });
+                  }
+                  else {
+                    String s = email.substring(0, email.indexOf('@'));
+                    firestore.collection('ITdata').add({
+                      'text': subname,
+                      'link': NotesLink,
+                      'email': email,
+                      'name': s
+                    });
+                  }
+                  Navigator.pop(context);
+                },
+                label: Text("Upload",style: TextStyle(color: Colors.white),),
+                icon: Icon(Icons.upload_rounded,color: Colors.white,),
+                // child: const Text(
+                //   'Upload',
+                //   style: TextStyle(color: Colors.white),
+                // ),
+              ),
+              // add some space
+              SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
@@ -365,91 +385,98 @@ class _ICElinkState extends State<ICElink> {
           title: Text("Upload"),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            Text(
-              'Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            TextField(
-                controller: textController,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  subname = value;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            Text(
-              'Add URL',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            TextField(
-                controller: textController1,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
-                textAlign: TextAlign.center,
-                onChanged: (valuee) {
-                  NotesLink = valuee;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            FlatButton(
-              shape: StadiumBorder(),
-              color: Colors.black54,
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var email = prefs.getString('email');
-                if (subname == null || NotesLink == null) {
-                  return showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Text Field can't be empty"),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },),
-                          ],
-                        );
-                      });
-                }
-                else
-                  {
-                String s = email.substring(0, email.indexOf('@'));
-                firestore.collection('ICEdata').add({
-                  'text': subname,
-                  'link': NotesLink,
-                  'email': email,
-                  'name': s
-                });}
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Upload',
-                style: TextStyle(color: Colors.white),
+
+        resizeToAvoidBottomInset: false,
+
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 45,
+                width: 10,
               ),
-            ),
-            // add some space
-            SizedBox(height: 30),
-          ],
+              Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    subname = value;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              Text(
+                'Add URL',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController1,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+                  textAlign: TextAlign.center,
+                  onChanged: (valuee) {
+                    NotesLink = valuee;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              FlatButton.icon(
+                shape: StadiumBorder(),
+                color: Colors.black54,
+                onPressed: () async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  var email = prefs.getString('email');
+                  if (subname == null || NotesLink == null) {
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Text Field can't be empty"),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },),
+                            ],
+                          );
+                        });
+                  }
+                  else
+                    {
+                  String s = email.substring(0, email.indexOf('@'));
+                  firestore.collection('ICEdata').add({
+                    'text': subname,
+                    'link': NotesLink,
+                    'email': email,
+                    'name': s
+                  });}
+                  Navigator.pop(context);
+                },
+                label: Text("Upload",style: TextStyle(color: Colors.white),),
+                icon: Icon(Icons.upload_rounded,color: Colors.white,),
+                // child: const Text(
+                //   'Upload',
+                //   style: TextStyle(color: Colors.white),
+                // ),
+              ),
+              // add some space
+              SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
@@ -477,91 +504,97 @@ class _MPAElinkState extends State<MPAElink> {
           title: Text("Upload"),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            Text(
-              'Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            TextField(
-                controller: textController,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  subname = value;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            Text(
-              'Add URL',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            TextField(
-                controller: textController1,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
-                textAlign: TextAlign.center,
-                onChanged: (valuee) {
-                  NotesLink = valuee;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            FlatButton(
-              shape: StadiumBorder(),
-              color: Colors.black54,
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var email = prefs.getString('email');
-                if (subname == null || NotesLink == null) {
-                  return showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Text Field can't be empty"),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },),
-                          ],
-                        );
-                      });
-                }
-                else
-                  {
-                String s = email.substring(0, email.indexOf('@'));
-                firestore.collection('MPAEdata').add({
-                  'text': subname,
-                  'link': NotesLink,
-                  'email': email,
-                  'name': s
-                });}
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Upload',
-                style: TextStyle(color: Colors.white),
+        resizeToAvoidBottomInset: false,
+
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 45,
+                width: 10,
               ),
-            ),
-            // add some space
-            SizedBox(height: 30),
-          ],
+              Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    subname = value;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              Text(
+                'Add URL',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController1,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+                  textAlign: TextAlign.center,
+                  onChanged: (valuee) {
+                    NotesLink = valuee;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              FlatButton.icon(
+                shape: StadiumBorder(),
+                color: Colors.black54,
+                onPressed: () async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  var email = prefs.getString('email');
+                  if (subname == null || NotesLink == null) {
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Text Field can't be empty"),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },),
+                            ],
+                          );
+                        });
+                  }
+                  else
+                    {
+                  String s = email.substring(0, email.indexOf('@'));
+                  firestore.collection('MPAEdata').add({
+                    'text': subname,
+                    'link': NotesLink,
+                    'email': email,
+                    'name': s
+                  });}
+                  Navigator.pop(context);
+                },
+                label: Text("Upload",style: TextStyle(color: Colors.white),),
+                icon: Icon(Icons.upload_rounded,color: Colors.white,),
+                // child: const Text(
+                //   'Upload',
+                //   style: TextStyle(color: Colors.white),
+                // ),
+              ),
+              // add some space
+              SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
@@ -589,91 +622,96 @@ class _MElinkState extends State<MElink> {
           title: Text("Upload"),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            Text(
-              'Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            TextField(
-                controller: textController,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  subname = value;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            Text(
-              'Add URL',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            TextField(
-                controller: textController1,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
-                textAlign: TextAlign.center,
-                onChanged: (valuee) {
-                  NotesLink = valuee;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            FlatButton(
-              shape: StadiumBorder(),
-              color: Colors.black54,
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var email = prefs.getString('email');
-                if (subname == null || NotesLink == null) {
-                  return showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Text Field can't be empty"),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },),
-                          ],
-                        );
-                      });
-                }
-                else
-                  {
-                String s = email.substring(0, email.indexOf('@'));
-                firestore.collection('MEdata').add({
-                  'text': subname,
-                  'link': NotesLink,
-                  'email': email,
-                  'name': s
-                });}
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Upload',
-                style: TextStyle(color: Colors.white),
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 45,
+                width: 10,
               ),
-            ),
-            // add some space
-            SizedBox(height: 30),
-          ],
+              Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    subname = value;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              Text(
+                'Add URL',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController1,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+                  textAlign: TextAlign.center,
+                  onChanged: (valuee) {
+                    NotesLink = valuee;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              FlatButton.icon(
+                shape: StadiumBorder(),
+                color: Colors.black54,
+                onPressed: () async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  var email = prefs.getString('email');
+                  if (subname == null || NotesLink == null) {
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Text Field can't be empty"),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },),
+                            ],
+                          );
+                        });
+                  }
+                  else
+                    {
+                  String s = email.substring(0, email.indexOf('@'));
+                  firestore.collection('MEdata').add({
+                    'text': subname,
+                    'link': NotesLink,
+                    'email': email,
+                    'name': s
+                  });}
+                  Navigator.pop(context);
+                },
+                label: Text("Upload",style: TextStyle(color: Colors.white),),
+                icon: Icon(Icons.upload_rounded,color: Colors.white,),
+                // child: const Text(
+                //   'Upload',
+                //   style: TextStyle(color: Colors.white),
+                // ),
+              ),
+              // add some space
+              SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
@@ -701,91 +739,96 @@ class _MAClinkState extends State<MAClink> {
           title: Text("Upload"),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            Text(
-              'Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            TextField(
-                controller: textController,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  subname = value;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            Text(
-              'Add URL',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            TextField(
-                controller: textController1,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
-                textAlign: TextAlign.center,
-                onChanged: (valuee) {
-                  NotesLink = valuee;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            FlatButton(
-              shape: StadiumBorder(),
-              color: Colors.black54,
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var email = prefs.getString('email');
-                if (subname == null || NotesLink == null) {
-                  return showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Text Field can't be empty"),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },),
-                          ],
-                        );
-                      });
-                }
-                else
-                  {
-                String s = email.substring(0, email.indexOf('@'));
-                firestore.collection('MACdata').add({
-                  'text': subname,
-                  'link': NotesLink,
-                  'email': email,
-                  'name': s
-                });}
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Upload',
-                style: TextStyle(color: Colors.white),
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 45,
+                width: 10,
               ),
-            ),
-            // add some space
-            SizedBox(height: 30),
-          ],
+              Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    subname = value;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              Text(
+                'Add URL',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController1,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+                  textAlign: TextAlign.center,
+                  onChanged: (valuee) {
+                    NotesLink = valuee;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              FlatButton.icon(
+                shape: StadiumBorder(),
+                color: Colors.black54,
+                onPressed: () async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  var email = prefs.getString('email');
+                  if (subname == null || NotesLink == null) {
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Text Field can't be empty"),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },),
+                            ],
+                          );
+                        });
+                  }
+                  else
+                    {
+                  String s = email.substring(0, email.indexOf('@'));
+                  firestore.collection('MACdata').add({
+                    'text': subname,
+                    'link': NotesLink,
+                    'email': email,
+                    'name': s
+                  });}
+                  Navigator.pop(context);
+                },
+                label: Text("Upload",style: TextStyle(color: Colors.white),),
+                icon: Icon(Icons.upload_rounded,color: Colors.white,),
+                // child: const Text(
+                //   'Upload',
+                //   style: TextStyle(color: Colors.white),
+                // ),
+              ),
+              // add some space
+              SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
@@ -813,91 +856,96 @@ class _BTlinkState extends State<BTlink> {
           title: Text("Upload"),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            Text(
-              'Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            TextField(
-                controller: textController,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  subname = value;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            Text(
-              'Add URL',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            TextField(
-                controller: textController1,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
-                textAlign: TextAlign.center,
-                onChanged: (valuee) {
-                  NotesLink = valuee;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            FlatButton(
-              shape: StadiumBorder(),
-              color: Colors.black54,
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var email = prefs.getString('email');
-                if (subname == null || NotesLink == null) {
-                  return showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Text Field can't be empty"),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },),
-                          ],
-                        );
-                      });
-                }
-                else
-                  {
-                String s = email.substring(0, email.indexOf('@'));
-                firestore.collection('BTdata').add({
-                  'text': subname,
-                  'link': NotesLink,
-                  'email': email,
-                  'name': s
-                });}
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Upload',
-                style: TextStyle(color: Colors.white),
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 45,
+                width: 10,
               ),
-            ),
-            // add some space
-            SizedBox(height: 30),
-          ],
+              Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    subname = value;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              Text(
+                'Add URL',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController1,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+                  textAlign: TextAlign.center,
+                  onChanged: (valuee) {
+                    NotesLink = valuee;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              FlatButton.icon(
+                shape: StadiumBorder(),
+                color: Colors.black54,
+                onPressed: () async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  var email = prefs.getString('email');
+                  if (subname == null || NotesLink == null) {
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Text Field can't be empty"),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },),
+                            ],
+                          );
+                        });
+                  }
+                  else
+                    {
+                  String s = email.substring(0, email.indexOf('@'));
+                  firestore.collection('BTdata').add({
+                    'text': subname,
+                    'link': NotesLink,
+                    'email': email,
+                    'name': s
+                  });}
+                  Navigator.pop(context);
+                },
+                label: Text("Upload",style: TextStyle(color: Colors.white),),
+                icon: Icon(Icons.upload_rounded,color: Colors.white,),
+                // child: const Text(
+                //   'Upload',
+                //   style: TextStyle(color: Colors.white),
+                // ),
+              ),
+              // add some space
+              SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
@@ -925,91 +973,98 @@ class _OTHERSlinkState extends State<OTHERSlink> {
           title: Text("Upload"),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            Text(
-              'Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 45,
-              width: 10,
-            ),
-            TextField(
-                controller: textController,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  subname = value;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            Text(
-              'Add URL',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            TextField(
-                controller: textController1,
-                decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
-                textAlign: TextAlign.center,
-                onChanged: (valuee) {
-                  NotesLink = valuee;
-                }),
-            SizedBox(
-              height: 35,
-              width: 10,
-            ),
-            FlatButton(
-              shape: StadiumBorder(),
-              color: Colors.black54,
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var email = prefs.getString('email');
-                if (subname == null || NotesLink == null) {
-                  return showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Text Field can't be empty"),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },),
-                          ],
-                        );
-                      });
-                }
-                else
-                  {
-                String s = email.substring(0, email.indexOf('@'));
-                firestore.collection('OTHERSdata').add({
-                  'text': subname,
-                  'link': NotesLink,
-                  'email': email,
-                  'name': s
-                });}
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Upload',
-                style: TextStyle(color: Colors.white),
+        resizeToAvoidBottomInset: false,
+
+
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 45,
+                width: 10,
               ),
-            ),
-            // add some space
-            SizedBox(height: 30),
-          ],
+              Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'TITLE'),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    subname = value;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              Text(
+                'Add URL',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              TextField(
+                  controller: textController1,
+                  decoration: kTextFieldDecoration.copyWith(hintText: 'URL'),
+                  textAlign: TextAlign.center,
+                  onChanged: (valuee) {
+                    NotesLink = valuee;
+                  }),
+              SizedBox(
+                height: 35,
+                width: 10,
+              ),
+              FlatButton.icon(
+                shape: StadiumBorder(),
+                color: Colors.black54,
+                onPressed: () async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  var email = prefs.getString('email');
+                  if (subname == null || NotesLink == null) {
+                    return showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Text Field can't be empty"),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },),
+                            ],
+                          );
+                        });
+                  }
+                  else
+                    {
+                  String s = email.substring(0, email.indexOf('@'));
+                  firestore.collection('OTHERSdata').add({
+                    'text': subname,
+                    'link': NotesLink,
+                    'email': email,
+                    'name': s
+                  });}
+                  Navigator.pop(context);
+                },
+                label: Text("Upload",style: TextStyle(color: Colors.white),),
+                icon: Icon(Icons.upload_rounded,color: Colors.white,),
+                // child: const Text(
+                //   'Upload',
+                //   style: TextStyle(color: Colors.white),
+                // ),
+              ),
+              // add some space
+              SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );

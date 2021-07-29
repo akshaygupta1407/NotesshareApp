@@ -18,11 +18,11 @@ class _CSrouteState extends State<CSroute> {
           backgroundColor: Colors.black,
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('CSdata').snapshots(),
+          stream: FirebaseFirestore.instance.collection('CSdata').orderBy("text",descending: false).snapshots(),
           builder: (_, snapshot) {
             if (snapshot.hasError) return Text('Error = ${snapshot.error}');
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
             }
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
@@ -32,7 +32,7 @@ class _CSrouteState extends State<CSroute> {
                   final data = docs[i].data();
                   return Card(
                     child: ListTile(
-                      title: Text(data['text']),
+                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
                       subtitle: Text('Uploaded by: ' + data['name']),
                       // subtitle: Text('hello'),
                       //subtitle: Text(data['link']),
@@ -46,7 +46,7 @@ class _CSrouteState extends State<CSroute> {
                 },
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -78,11 +78,11 @@ class _ECErouteState extends State<ECEroute> {
           backgroundColor: Colors.black,
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('ECEdata').snapshots(),
+          stream: FirebaseFirestore.instance.collection('ECEdata').orderBy("text",descending: false).snapshots(),
           builder: (_, snapshot) {
             if (snapshot.hasError) return Text('Error = ${snapshot.error}');
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
             }
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
@@ -92,7 +92,7 @@ class _ECErouteState extends State<ECEroute> {
                   final data = docs[i].data();
                   return Card(
                     child: ListTile(
-                      title: Text(data['text']),
+                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
                       subtitle: Text('Uploaded by: ' + data['name']),
                       //subtitle: Text(data['link']),
 
@@ -105,7 +105,7 @@ class _ECErouteState extends State<ECEroute> {
                 },
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -132,11 +132,11 @@ class ITroute extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('ITdata').snapshots(),
+          stream: FirebaseFirestore.instance.collection('ITdata').orderBy("text",descending: false).snapshots(),
           builder: (_, snapshot) {
             if (snapshot.hasError) return Text('Error = ${snapshot.error}');
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
             }
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
@@ -146,7 +146,7 @@ class ITroute extends StatelessWidget {
                   final data = docs[i].data();
                   return Card(
                     child: ListTile(
-                      title: Text(data['text']),
+                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
                       subtitle: Text('Uploaded by: ' + data['name']),
                       //subtitle: Text(data['link']),
 
@@ -159,7 +159,7 @@ class ITroute extends StatelessWidget {
                 },
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -186,11 +186,11 @@ class ICEroute extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('ICEdata').snapshots(),
+          stream: FirebaseFirestore.instance.collection('ICEdata').orderBy("text",descending: false).snapshots(),
           builder: (_, snapshot) {
             if (snapshot.hasError) return Text('Error = ${snapshot.error}');
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
             }
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
@@ -200,7 +200,7 @@ class ICEroute extends StatelessWidget {
                   final data = docs[i].data();
                   return Card(
                     child: ListTile(
-                      title: Text(data['text']),
+                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
                       subtitle: Text('Uploaded by: ' + data['name']),
                       //subtitle: Text(data['link']),
 
@@ -213,7 +213,7 @@ class ICEroute extends StatelessWidget {
                 },
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -240,11 +240,11 @@ class MPAEroute extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('MPAEdata').snapshots(),
+          stream: FirebaseFirestore.instance.collection('MPAEdata').orderBy("text",descending: false).snapshots(),
           builder: (_, snapshot) {
             if (snapshot.hasError) return Text('Error = ${snapshot.error}');
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
             }
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
@@ -254,7 +254,7 @@ class MPAEroute extends StatelessWidget {
                   final data = docs[i].data();
                   return Card(
                     child: ListTile(
-                      title: Text(data['text']),
+                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
                       subtitle: Text('Uploaded by: ' + data['name']),
                       //subtitle: Text(data['link']),
 
@@ -267,7 +267,7 @@ class MPAEroute extends StatelessWidget {
                 },
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -294,11 +294,11 @@ class MEroute extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('MEdata').snapshots(),
+          stream: FirebaseFirestore.instance.collection('MEdata').orderBy("text",descending: false).snapshots(),
           builder: (_, snapshot) {
             if (snapshot.hasError) return Text('Error = ${snapshot.error}');
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
             }
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
@@ -308,7 +308,7 @@ class MEroute extends StatelessWidget {
                   final data = docs[i].data();
                   return Card(
                     child: ListTile(
-                      title: Text(data['text']),
+                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
                       subtitle: Text('Uploaded by: ' + data['name']),
                       //subtitle: Text(data['link']),
 
@@ -321,7 +321,7 @@ class MEroute extends StatelessWidget {
                 },
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -348,11 +348,11 @@ class MACroute extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('MACdata').snapshots(),
+          stream: FirebaseFirestore.instance.collection('MACdata').orderBy("text",descending: false).snapshots(),
           builder: (_, snapshot) {
             if (snapshot.hasError) return Text('Error = ${snapshot.error}');
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
             }
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
@@ -362,7 +362,7 @@ class MACroute extends StatelessWidget {
                   final data = docs[i].data();
                   return Card(
                     child: ListTile(
-                      title: Text(data['text']),
+                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
                       subtitle: Text('Uploaded by: ' + data['name']),
                       //subtitle: Text(data['link']),
 
@@ -375,7 +375,7 @@ class MACroute extends StatelessWidget {
                 },
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -402,11 +402,11 @@ class BTroute extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('BTdata').snapshots(),
+          stream: FirebaseFirestore.instance.collection('BTdata').orderBy("text",descending: false).snapshots(),
           builder: (_, snapshot) {
             if (snapshot.hasError) return Text('Error = ${snapshot.error}');
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
             }
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
@@ -416,7 +416,7 @@ class BTroute extends StatelessWidget {
                   final data = docs[i].data();
                   return Card(
                     child: ListTile(
-                      title: Text(data['text']),
+                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
                       subtitle: Text('Uploaded by: ' + data['name']),
 
                       onTap: () async {
@@ -428,7 +428,7 @@ class BTroute extends StatelessWidget {
                 },
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -455,11 +455,11 @@ class OTHERSroute extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('OTHERSdata').snapshots(),
+          stream: FirebaseFirestore.instance.collection('OTHERSdata').orderBy("text",descending: false).snapshots(),
           builder: (_, snapshot) {
             if (snapshot.hasError) return Text('Error = ${snapshot.error}');
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
             }
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
@@ -469,7 +469,7 @@ class OTHERSroute extends StatelessWidget {
                   final data = docs[i].data();
                   return Card(
                     child: ListTile(
-                      title: Text(data['text']),
+                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
                       subtitle: Text('Uploaded by: ' + data['name']),
                       //subtitle: Text(data['link']),
 
@@ -482,7 +482,7 @@ class OTHERSroute extends StatelessWidget {
                 },
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return LinearProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),backgroundColor: Colors.white,);
           },
         ),
         floatingActionButton: FloatingActionButton(
