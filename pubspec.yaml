@@ -51,6 +51,10 @@ flutter:
     - assets/me.jpg
     - assets/mpae.jpg
     - assets/others.jpg
+    - assets/charac.jpg
+    - assets/logo.jpg
+    - assets/gmail.jpg
+    - assets/link.jpg
 #  fonts:
 #    - family: MonteCarle
 #      fonts:

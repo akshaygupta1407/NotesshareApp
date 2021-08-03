@@ -13,6 +13,7 @@ class _CSrouteState extends State<CSroute> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text("COE"),
           backgroundColor: Colors.black,
@@ -30,17 +31,26 @@ class _CSrouteState extends State<CSroute> {
                 itemCount: docs.length,
                 itemBuilder:(_, i) {
                   final data = docs[i].data();
-                  return Card(
-                    child: ListTile(
-                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
-                      subtitle: Text('Uploaded by: ' + data['name']),
-                      // subtitle: Text('hello'),
-                      //subtitle: Text(data['link']),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 5.0,right: 5.0),
+                    child: Card(
+                     // elevation: 2,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      shadowColor: Colors.blueGrey,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListTile(
+                          title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
+                          subtitle: Text('Uploaded by: ' + data['name']),
+                          // subtitle: Text('hello'),
+                          //subtitle: Text(data['link']),
 //
-                      onTap: () async {
-                         String url = data['link'];
-                        await launch(url);
-                      },
+                          onTap: () async {
+                             String url = data['link'];
+                            await launch(url);
+                          },
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -73,6 +83,7 @@ class _ECErouteState extends State<ECEroute> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text("ECE"),
           backgroundColor: Colors.black,
@@ -90,16 +101,23 @@ class _ECErouteState extends State<ECEroute> {
                 itemCount: docs.length,
                 itemBuilder: (_, i) {
                   final data = docs[i].data();
-                  return Card(
-                    child: ListTile(
-                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
-                      subtitle: Text('Uploaded by: ' + data['name']),
-                      //subtitle: Text(data['link']),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 5.0,right: 5.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListTile(
+                          title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
+                          subtitle: Text('Uploaded by: ' + data['name']),
+                          //subtitle: Text(data['link']),
 
-                      onTap: () async {
-                        String url = data['link'];
-                        await launch(url);
-                      },
+                          onTap: () async {
+                            String url = data['link'];
+                            await launch(url);
+                          },
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -127,6 +145,7 @@ class ITroute extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text("IT"),
           backgroundColor: Colors.black,
@@ -144,16 +163,23 @@ class ITroute extends StatelessWidget {
                 itemCount: docs.length,
                 itemBuilder: (_, i) {
                   final data = docs[i].data();
-                  return Card(
-                    child: ListTile(
-                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
-                      subtitle: Text('Uploaded by: ' + data['name']),
-                      //subtitle: Text(data['link']),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 5.0,right: 5.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListTile(
+                          title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
+                          subtitle: Text('Uploaded by: ' + data['name']),
+                          //subtitle: Text(data['link']),
 
-                      onTap: () async {
-                        String url = data['link'];
-                        await launch(url);
-                      },
+                          onTap: () async {
+                            String url = data['link'];
+                            await launch(url);
+                          },
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -181,6 +207,7 @@ class ICEroute extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text("ICE"),
           backgroundColor: Colors.black,
@@ -198,16 +225,23 @@ class ICEroute extends StatelessWidget {
                 itemCount: docs.length,
                 itemBuilder: (_, i) {
                   final data = docs[i].data();
-                  return Card(
-                    child: ListTile(
-                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
-                      subtitle: Text('Uploaded by: ' + data['name']),
-                      //subtitle: Text(data['link']),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 5.0,right: 5.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListTile(
+                          title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
+                          subtitle: Text('Uploaded by: ' + data['name']),
+                          //subtitle: Text(data['link']),
 
-                      onTap: () async {
-                        String url = data['link'];
-                        await launch(url);
-                      },
+                          onTap: () async {
+                            String url = data['link'];
+                            await launch(url);
+                          },
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -235,6 +269,7 @@ class MPAEroute extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text("MPAE"),
           backgroundColor: Colors.black,
@@ -252,16 +287,23 @@ class MPAEroute extends StatelessWidget {
                 itemCount: docs.length,
                 itemBuilder: (_, i) {
                   final data = docs[i].data();
-                  return Card(
-                    child: ListTile(
-                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
-                      subtitle: Text('Uploaded by: ' + data['name']),
-                      //subtitle: Text(data['link']),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 5.0,right: 5.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListTile(
+                          title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
+                          subtitle: Text('Uploaded by: ' + data['name']),
+                          //subtitle: Text(data['link']),
 
-                      onTap: () async {
-                        String url = data['link'];
-                        await launch(url);
-                      },
+                          onTap: () async {
+                            String url = data['link'];
+                            await launch(url);
+                          },
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -289,6 +331,7 @@ class MEroute extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text("ME"),
           backgroundColor: Colors.black,
@@ -306,16 +349,23 @@ class MEroute extends StatelessWidget {
                 itemCount: docs.length,
                 itemBuilder: (_, i) {
                   final data = docs[i].data();
-                  return Card(
-                    child: ListTile(
-                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
-                      subtitle: Text('Uploaded by: ' + data['name']),
-                      //subtitle: Text(data['link']),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 5.0,right: 5.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListTile(
+                          title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
+                          subtitle: Text('Uploaded by: ' + data['name']),
+                          //subtitle: Text(data['link']),
 
-                      onTap: () async {
-                        String url = data['link'];
-                        await launch(url);
-                      },
+                          onTap: () async {
+                            String url = data['link'];
+                            await launch(url);
+                          },
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -343,6 +393,7 @@ class MACroute extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text("MAC"),
           backgroundColor: Colors.black,
@@ -360,16 +411,23 @@ class MACroute extends StatelessWidget {
                 itemCount: docs.length,
                 itemBuilder: (_, i) {
                   final data = docs[i].data();
-                  return Card(
-                    child: ListTile(
-                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
-                      subtitle: Text('Uploaded by: ' + data['name']),
-                      //subtitle: Text(data['link']),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 5.0,right: 5.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListTile(
+                          title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
+                          subtitle: Text('Uploaded by: ' + data['name']),
+                          //subtitle: Text(data['link']),
 
-                      onTap: () async {
-                        String url = data['link'];
-                        await launch(url);
-                      },
+                          onTap: () async {
+                            String url = data['link'];
+                            await launch(url);
+                          },
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -397,6 +455,7 @@ class BTroute extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text("BT"),
           backgroundColor: Colors.black,
@@ -414,15 +473,22 @@ class BTroute extends StatelessWidget {
                 itemCount: docs.length,
                 itemBuilder: (_, i) {
                   final data = docs[i].data();
-                  return Card(
-                    child: ListTile(
-                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
-                      subtitle: Text('Uploaded by: ' + data['name']),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 5.0,right: 5.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListTile(
+                          title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
+                          subtitle: Text('Uploaded by: ' + data['name']),
 
-                      onTap: () async {
-                        String url = data['link'];
-                        await launch(url);
-                      },
+                          onTap: () async {
+                            String url = data['link'];
+                            await launch(url);
+                          },
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -450,6 +516,7 @@ class OTHERSroute extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text("OTHERS"),
           backgroundColor: Colors.black,
@@ -467,16 +534,23 @@ class OTHERSroute extends StatelessWidget {
                 itemCount: docs.length,
                 itemBuilder: (_, i) {
                   final data = docs[i].data();
-                  return Card(
-                    child: ListTile(
-                      title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
-                      subtitle: Text('Uploaded by: ' + data['name']),
-                      //subtitle: Text(data['link']),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 5.0,right: 5.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListTile(
+                          title: Text(data['text'],style: TextStyle(fontWeight: FontWeight.w500),),
+                          subtitle: Text('Uploaded by: ' + data['name']),
+                          //subtitle: Text(data['link']),
 
-                      onTap: () async {
-                        String url = data['link'];
-                        await launch(url);
-                      },
+                          onTap: () async {
+                            String url = data['link'];
+                            await launch(url);
+                          },
+                        ),
+                      ),
                     ),
                   );
                 },

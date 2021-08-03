@@ -1,4 +1,7 @@
+import 'package:project2/verify.dart';
+import 'package:project2/verify1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'forgot.dart';
 import 'rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
@@ -72,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     colour: Colors.black54,
                     onPressed: () async {
                       setState(() {
-                        showspinner = true;
+                        showspinner = false;
                       });
                       try {
                         final user = await _auth.signInWithEmailAndPassword(
@@ -81,10 +84,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           SharedPreferences prefs =
                               await SharedPreferences.getInstance();
                           prefs.setString('email', email);
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Notes()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => VerifyScreen1()));
                         }
-                        showspinner = false;
+                        showspinner = true;
                       } catch (e) {
                         showDialog(
                             context: context,
@@ -103,6 +108,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         });
                       }
                     }),
+
+                InkWell(
+                  child: Text("Forgot Password",textAlign: TextAlign.right,style: TextStyle(color: Colors.blue),),
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Forgot()));
+                  },
+                ),
               ],
             ),
           ),

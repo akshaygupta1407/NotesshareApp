@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:project2/verify.dart';
 import 'Subjects.dart';
 import 'constants.dart';
 import 'package:flutter/material.dart';
@@ -94,10 +95,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               await SharedPreferences.getInstance();
                           prefs.setString('email', email);
                           Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Notes()));
+                              MaterialPageRoute(builder: (context) => VerifyScreen()));
                         }
                         setState(() {
-                          showSpinner = true;
+                          showSpinner = false;
                         });
                       } catch (e) {
                         print(e);
