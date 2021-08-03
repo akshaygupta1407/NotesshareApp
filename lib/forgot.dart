@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project2/verify.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'rounded_button.dart';
 import 'constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-class Forgot extends StatefulWidget {
 
+class Forgot extends StatefulWidget {
   @override
   _ForgotState createState() => _ForgotState();
 }
@@ -50,38 +48,28 @@ class _ForgotState extends State<Forgot> {
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Enter your email id'),
                 ),
-                // SizedBox(
-                //   height: 8.0,
-                // ),
-                // TextField(
-                //   obscureText: true,
-                //   textAlign: TextAlign.center,
-                //   onChanged: (value) {
-                //     //Do something with the user input.
-                //     password = value;
-                //   },
-                //   decoration: kTextFieldDecoration.copyWith(
-                //       hintText: 'Enter your new password'),
-                // ),
                 SizedBox(
                   height: 24.0,
                 ),
                 RoundedButton(
                     title: 'Reset Password',
                     colour: Colors.black54,
-                    onPressed: (){
-                          _auth.sendPasswordResetEmail(email: email);
-                          //Navigator.of(context).pop();
-                          showDialog(context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text("A link has been sent to your email to reset your password."),
-                                actions: <Widget>[
-                                  FlatButton(
-                                    child: Text("OK"),
-                                    onPressed: () => Navigator.pop(context, true),
-                                  ),
-                                ],
-                              ),);
+                    onPressed: () {
+                      _auth.sendPasswordResetEmail(email: email);
+                      //Navigator.of(context).pop();
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text(
+                              "A link has been sent to your email to reset your password."),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text("OK"),
+                              onPressed: () => Navigator.pop(context, true),
+                            ),
+                          ],
+                        ),
+                      );
                     }),
               ],
             ),
