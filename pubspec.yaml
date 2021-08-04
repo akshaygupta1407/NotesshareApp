@@ -27,6 +27,12 @@ dependencies:
   animated_text_kit:
   modal_progress_hud:
   shared_preferences:
+  google_sign_in:
+  rxdart:
+  observable:
+  fluttertoast:
+  flutter_signin_button:
+  font_awesome_flutter:
 
 
 dev_dependencies:

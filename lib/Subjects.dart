@@ -4,20 +4,97 @@ import 'package:project2/Welcome.dart';
 import 'package:project2/help.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'TC.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'branches.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+final GoogleSignIn googleSignIn = GoogleSignIn();
+final user = FirebaseAuth.instance.currentUser;
 class Notes extends StatefulWidget {
   @override
   _NotesState createState() => _NotesState();
 }
 
 class _NotesState extends State<Notes> {
+  // bool isAuth;
+  // PageController pageController;
+  // int pageIndex = 0;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   Future<bool> _onBackPressed() {
     return SystemNavigator.pop();
   }
 
+
+  // @override
+  // void initState() {
+  //   // detects when user signed in
+  //   super.initState();
+  //   pageController = PageController(
+  //
+  //   );
+  //
+  //   googleSignIn.onCurrentUserChanged.listen(
+  //           (account) {
+  //         handleSignIn(account);
+  //       },onError: (err)
+  //   {
+  //     print('Error Signing in : $err');
+  //   }
+  //   );
+
+// Reauthenticate  user when app is opened
+//     googleSignIn.signInSilently(suppressErrors: false).then((account){
+//       handleSignIn(account);
+//     }).catchError((err)
+//     {
+//       print('Error Signing in : $err');
+//     });
+//   }
+
+  // handleSignIn(GoogleSignInAccount account)
+  // {
+  //   if (account != null) {
+  //     print('User Signed In!: $account');
+  //     setState(() {
+  //       isAuth = true;
+  //     });
+  //   } else {
+  //     setState(
+  //           () {
+  //         isAuth = false;
+  //       },
+  //     );
+  //   }
+  // }
+
+  // @override
+  // void dispose()
+  // {
+  //   pageController.dispose();
+  //   super.dispose();
+  // }
+  //
+  // onPageChanged(int pageIndex)
+  // {
+  //   setState(() {
+  //     this.pageIndex = pageIndex;
+  //   });
+  // }
+  //
+  // onTap(int pageIndex){
+  //   pageController.animateToPage(
+  //     pageIndex,
+  //     duration: Duration(milliseconds: 200),
+  //     curve: Curves.easeInOut,
+  //   );
+  // }
+
+  // logout()
+  // {
+  //   googleSignIn.signOut();
+  // }
+  // Future<void> logout() async {
+  //   await FirebaseAuth.instance.signOut();
+  // }
   String email;
   Future<void> _signOut(BuildContext context) async {
     await _firebaseAuth.signOut().then((_) {
@@ -67,6 +144,13 @@ class _NotesState extends State<Notes> {
                               FlatButton(
                                   child: Text("YES"),
                                   onPressed: () async {
+                                    // logout();
+                                    googleSignIn.signOut();
+                                    print("LOG OUT");
+                                    Navigator.of(context).popUntil((route) => route.isFirst);
+                                    //Navigator.pop();
+                                    Navigator.push(context,
+                                        new MaterialPageRoute(builder: (context) => new welcomepage()));
                                     SharedPreferences prefs =
                                         await SharedPreferences.getInstance();
                                     prefs.remove('email');

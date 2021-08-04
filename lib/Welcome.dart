@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:project2/Subjects.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'rounded_button.dart';
-import 'package:project2/RegistrationScreen.dart';
-import 'login_screen.dart';
+final GoogleSignIn googleSignIn = GoogleSignIn();
 class welcomepage extends StatefulWidget {
 
 
@@ -26,9 +31,6 @@ class _welcomepageState extends State<welcomepage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                // Container(
-                //   child: Image(image: NetworkImage("https://i0.wp.com/blog.lulu.com/wp-content/uploads/2018/11/112718_GIFs-Blog.gif?fit=1000%2C550&ssl=1"),height: 50,width: 50,),
-                // ),
                 Row(
                    mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -44,13 +46,25 @@ class _welcomepageState extends State<welcomepage> {
                 SizedBox(
                   height: 48.0,
                 ),
-                RoundedButton(title: 'Log In',colour: Colors.black54,onPressed: (){
-                 // Navigator.pushNamed(context, LoginScreen.id);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-                },),
-                RoundedButton(title: 'Register',colour: Colors.black,onPressed: (){
+
+                RoundedButton(title: 'Sign In With Google',colour: Colors.black,onPressed: ()
+                {
+
+                  signInWithGoogle().then((value)async{
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
+                    final user = FirebaseAuth.instance.currentUser;
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setString('email', user.email);
+                  });
+                  //return
                   //Navigator.pushNamed(context, RegistrationScreen.id);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationScreen()));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationScreen()));
+                  //   return isAuth ? Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => Notes())) : welcomepage();
+                  //print(isAuth);
+                  // final user = FirebaseAuth.instance.currentUser;
+                  // print(user.displayName);
                 },),
               ],
             ),
@@ -59,4 +73,18 @@ class _welcomepageState extends State<welcomepage> {
       ),
     );
   }
+}
+Future<UserCredential> signInWithGoogle()async{
+  final GoogleSignInAccount googleuser = await GoogleSignIn().signIn();
+  final GoogleSignInAuthentication googleAuth = await googleuser.authentication;
+  final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+    idToken: googleAuth.idToken,
+    accessToken: googleAuth.accessToken
+  );
+  // SharedPreferences prefs =
+  // await SharedPreferences.getInstance();
+  // prefs.setString('email', user.email);
+  // print('.............................................................................................'+user.email);
+//
+return await FirebaseAuth.instance.signInWithCredential(credential);
 }

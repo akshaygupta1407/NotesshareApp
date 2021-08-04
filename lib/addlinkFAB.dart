@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'constants.dart';
 import 'package:firebase_core/firebase_core.dart';
-
+final user = FirebaseAuth.instance.currentUser;
 class CSlink extends StatefulWidget {
   @override
   _CSlinkState createState() => _CSlinkState();
@@ -21,6 +21,8 @@ class _CSlinkState extends State<CSlink> {
   String subname;
   final textController = TextEditingController();
   final textController1 = TextEditingController();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +97,7 @@ class _CSlinkState extends State<CSlink> {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     var email = prefs.getString('email');
-                    if (subname == null || NotesLink == null) {
+                    if (subname == null || NotesLink == null || subname.isEmpty || NotesLink.isEmpty) {
                       return showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -112,12 +114,12 @@ class _CSlinkState extends State<CSlink> {
                           });
                     }
                     else {
-                      String s = email.substring(0, email.indexOf('@'));
+                     // String s = email.substring(0, email.indexOf('@'));
                       firestore.collection('CSdata').add({
                         'text': subname,
                         'link': NotesLink,
-                        'email': email,
-                        'name': s
+                        'email': user.email,
+                        'name': user.displayName,
                       });
                     }
                     Navigator.pop(context);
@@ -225,7 +227,7 @@ class _ECElinkState extends State<ECElink> {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     var email = prefs.getString('email');
-                    if (subname == null || NotesLink == null) {
+                    if (subname == null || NotesLink == null || subname.isEmpty || NotesLink.isEmpty) {
                       return showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -242,12 +244,12 @@ class _ECElinkState extends State<ECElink> {
                           });
                     }
                     else {
-                      String s = email.substring(0, email.indexOf('@'));
+                      //String s = email.substring(0, email.indexOf('@'));
                       firestore.collection('ECEdata').add({
                         'text': subname,
                         'link': NotesLink,
-                        'email': email,
-                        'name': s
+                        'email': user.email,
+                        'name': user.displayName,
                       });
                     }
                     Navigator.pop(context);
@@ -353,7 +355,7 @@ class _ITlinkState extends State<ITlink> {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     var email = prefs.getString('email');
-                    if (subname == null || NotesLink == null) {
+                    if (subname == null || NotesLink == null || subname.isEmpty || NotesLink.isEmpty) {
                       return showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -370,12 +372,12 @@ class _ITlinkState extends State<ITlink> {
                           });
                     }
                     else {
-                      String s = email.substring(0, email.indexOf('@'));
+                      //String s = email.substring(0, email.indexOf('@'));
                       firestore.collection('ITdata').add({
                         'text': subname,
                         'link': NotesLink,
-                        'email': email,
-                        'name': s
+                        'email': user.email,
+                        'name': user.displayName,
                       });
                     }
                     Navigator.pop(context);
@@ -483,7 +485,7 @@ class _ICElinkState extends State<ICElink> {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     var email = prefs.getString('email');
-                    if (subname == null || NotesLink == null) {
+                    if (subname == null || NotesLink == null || subname.isEmpty || NotesLink.isEmpty) {
                       return showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -501,12 +503,12 @@ class _ICElinkState extends State<ICElink> {
                     }
                     else
                       {
-                    String s = email.substring(0, email.indexOf('@'));
+                    //String s = email.substring(0, email.indexOf('@'));
                     firestore.collection('ICEdata').add({
                       'text': subname,
                       'link': NotesLink,
-                      'email': email,
-                      'name': s
+                      'email': user.email,
+                      'name': user.displayName,
                     });}
                     Navigator.pop(context);
                   },
@@ -612,7 +614,7 @@ class _MPAElinkState extends State<MPAElink> {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     var email = prefs.getString('email');
-                    if (subname == null || NotesLink == null) {
+                    if (subname == null || NotesLink == null || subname.isEmpty || NotesLink.isEmpty) {
                       return showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -630,12 +632,12 @@ class _MPAElinkState extends State<MPAElink> {
                     }
                     else
                       {
-                    String s = email.substring(0, email.indexOf('@'));
+                    //String s = email.substring(0, email.indexOf('@'));
                     firestore.collection('MPAEdata').add({
                       'text': subname,
                       'link': NotesLink,
-                      'email': email,
-                      'name': s
+                      'email': user.email,
+                      'name': user.displayName,
                     });}
                     Navigator.pop(context);
                   },
@@ -740,7 +742,7 @@ class _MElinkState extends State<MElink> {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     var email = prefs.getString('email');
-                    if (subname == null || NotesLink == null) {
+                    if (subname == null || NotesLink == null || subname.isEmpty || NotesLink.isEmpty) {
                       return showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -758,12 +760,12 @@ class _MElinkState extends State<MElink> {
                     }
                     else
                       {
-                    String s = email.substring(0, email.indexOf('@'));
+                    //String s = email.substring(0, email.indexOf('@'));
                     firestore.collection('MEdata').add({
                       'text': subname,
                       'link': NotesLink,
-                      'email': email,
-                      'name': s
+                      'email': user.email,
+                      'name': user.displayName,
                     });}
                     Navigator.pop(context);
                   },
@@ -868,7 +870,7 @@ class _MAClinkState extends State<MAClink> {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     var email = prefs.getString('email');
-                    if (subname == null || NotesLink == null) {
+                    if (subname == null || NotesLink == null || subname.isEmpty || NotesLink.isEmpty) {
                       return showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -886,12 +888,12 @@ class _MAClinkState extends State<MAClink> {
                     }
                     else
                       {
-                    String s = email.substring(0, email.indexOf('@'));
+                   // String s = email.substring(0, email.indexOf('@'));
                     firestore.collection('MACdata').add({
                       'text': subname,
                       'link': NotesLink,
-                      'email': email,
-                      'name': s
+                      'email': user.email,
+                      'name': user.displayName,
                     });}
                     Navigator.pop(context);
                   },
@@ -996,7 +998,7 @@ class _BTlinkState extends State<BTlink> {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     var email = prefs.getString('email');
-                    if (subname == null || NotesLink == null) {
+                    if (subname == null || NotesLink == null || subname.isEmpty || NotesLink.isEmpty) {
                       return showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -1014,12 +1016,12 @@ class _BTlinkState extends State<BTlink> {
                     }
                     else
                       {
-                    String s = email.substring(0, email.indexOf('@'));
+                    //String s = email.substring(0, email.indexOf('@'));
                     firestore.collection('BTdata').add({
                       'text': subname,
                       'link': NotesLink,
-                      'email': email,
-                      'name': s
+                      'email': user.email,
+                      'name': user.displayName,
                     });}
                     Navigator.pop(context);
                   },
@@ -1126,7 +1128,7 @@ class _OTHERSlinkState extends State<OTHERSlink> {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     var email = prefs.getString('email');
-                    if (subname == null || NotesLink == null) {
+                    if (subname == null || NotesLink == null || subname.isEmpty || NotesLink.isEmpty) {
                       return showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -1144,12 +1146,12 @@ class _OTHERSlinkState extends State<OTHERSlink> {
                     }
                     else
                       {
-                    String s = email.substring(0, email.indexOf('@'));
+                    //String s = email.substring(0, email.indexOf('@'));
                     firestore.collection('OTHERSdata').add({
                       'text': subname,
                       'link': NotesLink,
-                      'email': email,
-                      'name': s
+                      'email': user.email,
+                      'name': user.displayName,
                     });}
                     Navigator.pop(context);
                   },
